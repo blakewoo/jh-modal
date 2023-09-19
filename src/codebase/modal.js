@@ -1,4 +1,4 @@
-const JH_okcanelModal = (function () {
+const JH_okCancelModal = (function () {
 
     /**
      * @param TITLE:제목
@@ -7,7 +7,7 @@ const JH_okcanelModal = (function () {
      * @param CANCEL:cancel버튼문구
      * @constructor
      */
-    function JH_okcanelModal (TITLE,EXPLAIN,OK,CANCEL,WIDTH=300,HEIGHT=200) {
+    function JH_okCancelModal (TITLE,EXPLAIN,OK,CANCEL,WIDTH=300,HEIGHT=200) {
         this.TITLE = TITLE
         this.EXPLAIN = EXPLAIN
         this.OK_VALUE = OK
@@ -18,7 +18,7 @@ const JH_okcanelModal = (function () {
         this.paint()
     }
 
-    JH_okcanelModal.prototype.paint = function () {
+    JH_okCancelModal.prototype.paint = function () {
         let bodyContainer = document.getElementsByTagName("body")[0]
 
         let containerDiv = document.createElement("div")
@@ -63,14 +63,14 @@ const JH_okcanelModal = (function () {
 
         let okButton = document.createElement("input")
         okButton.type = "button"
-        okButton.addEventListener("click",this.okEvent)
+        okButton.addEventListener("click",okEvent.bind(this))
         okButton.value = this.OK_VALUE;
         okButton.classList.add("jh_modal_button")
         okButton.style.marginRight = "10px"
 
         let cancelButton = document.createElement("input")
         cancelButton.type = "button"
-        cancelButton.addEventListener("click",this.cancelEvent)
+        cancelButton.addEventListener("click",cancelEvent)
         cancelButton.value = this.CANCEL_VALUE;
         cancelButton.classList.add("jh_modal_button")
 
@@ -86,7 +86,6 @@ const JH_okcanelModal = (function () {
             titleDiv.style.fontSize = "14pt"
             titleDiv.style.fontWeight = "bold"
             containerDiv.appendChild(titleDiv)
-
         }
 
         containerDiv.appendChild(explainDiv)
@@ -94,13 +93,19 @@ const JH_okcanelModal = (function () {
         bodyContainer.appendChild(containerDiv)
     }
 
-    JH_okcanelModal.prototype.okEvent = function (event) {
-        alert("ddd")
+    JH_okCancelModal.prototype.okDoingFunc = function () {
+
     }
 
-    JH_okcanelModal.prototype.cancelEvent = function (event) {
+    function okEvent (event) {
+        this.okDoingFunc()
         event.currentTarget.parentNode.parentNode.remove()
     }
 
-    return JH_okcanelModal
+
+    function cancelEvent (event) {
+        event.currentTarget.parentNode.parentNode.remove()
+    }
+
+    return JH_okCancelModal
 }())
