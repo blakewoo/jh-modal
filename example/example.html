@@ -6,12 +6,24 @@
     <script src="../src/codebase/modal.js"></script>
 </head>
 <body>
-<input type="button" id="testButton" value="ok cancel"/>
+<input type="button" id="okCancelButton" value="ok cancel modal"/>
+<input type="button" id="okButton" value="ok modal"/>
+
 <div id="targetDate"></div>
 <script>
-    document.getElementById("testButton").addEventListener("click",function (event){
-        let example = new JH_okCancelModal("check","test","ok","cancel")
-        example.okDoingFunc = function () {
+    document.getElementById("okCancelButton").addEventListener("click",function (event){
+        let example = new JH_twoChoiceModal("check","test","ok","cancel")
+        example.firstEvent = function () {
+            alert("ok button check!")
+        }
+        example.secondEvent = function () {
+            alert("cancel button check!")
+        }
+    })
+
+    document.getElementById("okButton").addEventListener("click",function (event){
+        let example = new JH_oneChoiceModal("check","test","ok")
+        example.firstEvent = function () {
             alert("ok button check!")
         }
     })
