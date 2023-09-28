@@ -25,7 +25,7 @@ exports.JH_twoChoiceModal = JH_twoChoiceModal
 ```
 
 ##Quick start
-To create the object for the event where you want the Datepicker to appear, import the following properties:
+To create the object for the event where you want the modal to appear, import the following properties:
 ### One choice modal
 ```javascript
 document.getElementById("exampleId").addEventListener("click",function(event){
